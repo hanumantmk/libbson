@@ -37,6 +37,8 @@ LT_INIT
 AM_INIT_AUTOMAKE([1.10])
 AM_PROG_CC_C_O
 
+AC_PROG_CXX
+
 
 dnl **************************************************************************
 dnl Versioning Definitions

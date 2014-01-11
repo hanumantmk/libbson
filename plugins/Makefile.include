@@ -1,0 +1,10 @@
+lib_LTLIBRARIES += libprintfunctionnames.la
+
+libprintfunctionnames_la_SOURCES = \
+	$(top_srcdir)/plugins/PrintFunctionNames.cpp
+
+libprintfunctionnames_la_CXXFLAGS = \
+	`llvm-config --cxxflags`
+
+libprintfunctionnames_la_LDFLAGS = \
+	`llvm-config --ldflags`
