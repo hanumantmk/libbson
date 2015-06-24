@@ -10,6 +10,7 @@ test_libbson_SOURCES = \
 	tests/test-bson.c \
 	tests/test-endian.c \
 	tests/test-clock.c \
+	tests/test-dec128.c \
 	tests/test-error.c \
 	tests/test-iso8601.c \
 	tests/test-iter.c \
@@ -64,6 +65,9 @@ endif
 
 valgrind: $(TEST_PROGS)
 	$(LIBTOOL) --mode=execute valgrind --leak-check=full ./test-libbson -f -p
+
+lldb: $(TEST_PROGS)
+	$(LIBTOOL) --mode=execute lldb ./test-libbson
 
 DISTCLEANFILES += test.log
 
@@ -138,6 +142,7 @@ EXTRA_DIST += \
 	tests/binary/test55.bson \
 	tests/binary/test56.bson \
 	tests/binary/test57.bson \
+	tests/binary/test58.bson \
 	tests/binary/test6.bson \
 	tests/binary/test7.bson \
 	tests/binary/test8.bson \

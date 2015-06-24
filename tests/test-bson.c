@@ -496,6 +496,24 @@ test_bson_append_int64 (void)
 
 
 static void
+test_bson_append_dec128 (void)
+{
+   bson_t *b;
+   bson_t *b2;
+   bson_dec128_t value;
+   value.high = 0;
+   value.low = 1;
+
+   b = bson_new();
+   assert(bson_append_dec128(b, "a", -1, value));
+   b2 = get_bson("test58.bson");
+   assert_bson_equal(b, b2);
+   bson_destroy(b);
+   bson_destroy(b2);
+}
+
+
+static void
 test_bson_append_iter (void)
 {
    bson_iter_t iter;
@@ -1630,6 +1648,7 @@ test_bson_install (TestSuite *suite)
    TestSuite_Add (suite, "/bson/append_double", test_bson_append_double);
    TestSuite_Add (suite, "/bson/append_int32", test_bson_append_int32);
    TestSuite_Add (suite, "/bson/append_int64", test_bson_append_int64);
+   TestSuite_Add (suite, "/bson/append_dec128", test_bson_append_dec128);
    TestSuite_Add (suite, "/bson/append_iter", test_bson_append_iter);
    TestSuite_Add (suite, "/bson/append_maxkey", test_bson_append_maxkey);
    TestSuite_Add (suite, "/bson/append_minkey", test_bson_append_minkey);
